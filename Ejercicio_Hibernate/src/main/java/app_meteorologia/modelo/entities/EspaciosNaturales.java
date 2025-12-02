@@ -5,18 +5,32 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "espacios_naturales")
 public class EspaciosNaturales implements Serializable {
 
 	private static final long serialVersionUID = 20153009663153159L;
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_espacio")
 	private Integer idEspacio;
+	@Column(name = "nombre", length = 100)
 	private String nombre;
+	@Column(name = "descripcion", columnDefinition = "TEXT")
 	private String descripcion;
+	@Column(name = "tipo", length = 50)
 	private String tipo;
+	@Column(name = "categoria", length = 50)
 	private String categoria;
+	@Column(name = "latitud")
 	private Double latitud;
+	@Column(name = "longitud")
 	private Double longitud;
-	private Set municipiosEspaciosNats = new HashSet(0);
+	@OneToMany(mappedBy = "espaciosNaturales", fetch = FetchType.LAZY)
+	private Set<MunicipiosEspaciosNat> municipiosEspaciosNats = new HashSet<>(0);
 
 	public EspaciosNaturales() {
 	}

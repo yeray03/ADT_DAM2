@@ -4,13 +4,26 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "provincias")
+
 public class Provincias implements Serializable {
 
 	private static final long serialVersionUID = -5525908594051990651L;
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_provincia")
 	private int idProvincia;
+	
+	@Column(name = "nombre", length = 100)
 	private String nombre;
-	private Set municipioses = new HashSet(0);
+	
+	@OneToMany(mappedBy = "provincias", fetch = FetchType.LAZY)
+	private Set<Municipios> municipioses = new HashSet<>(0);
 
 	public Provincias() {
 	}

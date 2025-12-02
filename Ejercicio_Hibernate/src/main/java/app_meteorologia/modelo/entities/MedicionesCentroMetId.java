@@ -4,12 +4,18 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
+import jakarta.persistence.*;
+
+@Embeddable
 public class MedicionesCentroMetId implements Serializable {
 
 	private static final long serialVersionUID = -4556075007927280420L;
 	
+	@Column(name = "fecha")
 	private Date fecha;
+	@Column(name = "hora")
 	private Time hora;
+	@Column(name = "id_centro_met")
 	private int idCentroMet;
 
 	public MedicionesCentroMetId() {

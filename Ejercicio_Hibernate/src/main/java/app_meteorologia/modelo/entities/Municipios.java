@@ -4,17 +4,31 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "municipios")
 public class Municipios implements Serializable {
 
 	private static final long serialVersionUID = 3929594558240552756L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_municipio")
 	private Integer idMunicipio;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_provincia")
 	private Provincias provincias;
+	@Column(name = "nombre", length = 100)
 	private String nombre;
+	@Column(name = "descripcion", columnDefinition = "TEXT")
 	private String descripcion;
+	@Column(name = "cod_municipio")
 	private Integer codMunicipio;
-	private Set municipiosEspaciosNats = new HashSet(0);
-	private Set centrosMeteorologicoses = new HashSet(0);
+	@OneToMany(mappedBy = "municipios", fetch = FetchType.LAZY)
+	private Set<MunicipiosEspaciosNat> municipiosEspaciosNats = new HashSet<>(0);
+	@OneToMany(mappedBy = "municipios", fetch = FetchType.LAZY)
+	private Set<CentrosMeteorologicos> centrosMeteorologicoses = new HashSet<>(0);
 
 	public Municipios() {
 	}
@@ -84,7 +98,7 @@ public class Municipios implements Serializable {
 	public void setCentrosMeteorologicoses(Set centrosMeteorologicoses) {
 		this.centrosMeteorologicoses = centrosMeteorologicoses;
 	}
-	
+
 	@Override
 	public String toString() {
 		return nombre;

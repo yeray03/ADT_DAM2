@@ -5,19 +5,36 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "centros_meteorologicos")
+
 public class CentrosMeteorologicos implements Serializable {
 
 	private static final long serialVersionUID = -826048818372657632L;
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_centro_met")
 	private Integer idCentroMet;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_municipio")
 	private Municipios municipios;
+	@Column(name = "nombre", length = 100)
 	private String nombre;
+	@Column(name = "direccion", length = 255)
 	private String direccion;
+	@Column(name = "latitud")
 	private Double latitud;
+	@Column(name = "longitud")
 	private Double longitud;
+	@Column(name = "url")
 	private String url;
+	@Column(name = "hash")
 	private String hash;
-	private Set medicionesCentroMets = new HashSet(0);
+	@OneToMany(mappedBy = "centrosMeteorologicos", fetch = FetchType.LAZY)
+	private Set<MedicionesCentroMet> medicionesCentroMets = new HashSet<>(0);
 
 	public CentrosMeteorologicos() {
 	}

@@ -2,11 +2,16 @@ package app_meteorologia.modelo.entities;
 
 import java.io.Serializable;
 
+import jakarta.persistence.*;
+
+@Embeddable
 public class MunicipiosEspaciosNatId implements Serializable {
 
 	private static final long serialVersionUID = 7411651692183639630L;
-	
+
+	@Column(name = "id_espacio")
 	private int idEspacio;
+	@Column(name = "id_municipio")
 	private int idMunicipio;
 
 	public MunicipiosEspaciosNatId() {

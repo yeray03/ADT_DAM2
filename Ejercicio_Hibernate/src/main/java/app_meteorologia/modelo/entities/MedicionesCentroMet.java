@@ -1,20 +1,34 @@
 package app_meteorologia.modelo.entities;
 
 import java.io.Serializable;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "mediciones_centro_met")
 public class MedicionesCentroMet implements Serializable {
 
 	private static final long serialVersionUID = 64071800526901271L;
-	
+	@EmbeddedId
+	@Column(name = "id")
 	private MedicionesCentroMetId id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_centro_met", insertable = false, updatable = false)
 	private CentrosMeteorologicos centrosMeteorologicos;
+	@Column(name = "dir_viento")
 	private Integer dirViento;
+	@Column(name = "h_relativa")
 	private Integer HRelativa;
+	@Column(name = "p_atmosferica")
 	private Float PAtmosferica;
+	@Column(name = "precip")
 	private Float precip;
+	@Column(name = "rad_solar")
 	private Float radSolar;
+	@Column(name = "temp_ambiente")
 	private Float tempAmbiente;
+	@Column(name = "vviento")
 	private Float VViento;
+	@Column(name = "ica")
 	private String ica;
 
 	public MedicionesCentroMet() {

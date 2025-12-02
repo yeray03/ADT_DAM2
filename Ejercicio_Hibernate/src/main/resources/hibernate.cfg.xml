@@ -1,41 +1,31 @@
 <hibernate-configuration>
   <session-factory>
-    
+
     <!-- Configuración de conexión -->
     <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="hibernate.connection.url">
-        jdbc:mysql://localhost:3306/ejercicioHibernate?createDatabaseIfNotExist=true
+      jdbc:mysql://localhost:3307/ejercicioHibernate?createDatabaseIfNotExist=true
     </property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password"></property>
-    
+
     <!-- Dialecto para MySQL -->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    
+
     <!-- Mostrar el SQL generado -->
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
-    
+
     <!-- Actualizar el esquema automáticamente -->
-    <property name="hibernate.hbm2ddl.auto">update</property>
-    
+    <property name="hibernate.hbm2ddl.auto">create</property>
+
     <!-- Registrar las entidades -->
-    <mapping
-      class="Ejercicio_Hibernate.app_meteorologia.modelo.entities.CentrosMeteorologicos" />
-      <mapping
-      class="Ejercicio_Hibernate.app_meteorologia.modelo.entities.EspaciosNaturales" />
-      <mapping
-      class= "Ejercicio_Hibernate.app_meteorologia.modelo.entities.MedicionesCentroMet" />
-      <mapping
-      class= "Ejercicio_Hibernate.app_meteorologia.modelo.entities.MedicionesCentroMetId" />
-      <mapping
-      class="Ejercicio_Hibernate.app_meteorologia.modelo.entities.Municipios" />
-      <mapping
-      class="Ejercicio_Hibernate.app_meteorologia.modelo.entities.MunicipiosEspaciosNat" />
-      <mapping
-      class="Ejercicio_Hibernate.app_meteorologia.modelo.entities.MunicipiosEspaciosNatId" />
-      <mapping
-      class="Ejercicio_Hibernate.app_meteorologia.modelo.entities.Provincias" />
-    
+    <mapping class="app_meteorologia.modelo.entities.Provincias" />
+    <mapping class="app_meteorologia.modelo.entities.Municipios" />
+    <mapping class="app_meteorologia.modelo.entities.CentrosMeteorologicos" />
+    <mapping class="app_meteorologia.modelo.entities.EspaciosNaturales" />
+    <mapping class="app_meteorologia.modelo.entities.MunicipiosEspaciosNat" />
+    <mapping class="app_meteorologia.modelo.entities.MedicionesCentroMet" />
+
   </session-factory>
 </hibernate-configuration>
