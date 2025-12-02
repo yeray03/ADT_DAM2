@@ -1,27 +1,69 @@
-# Ignorar todos los directorios target en cualquier subcarpeta (proyectos Maven)
-**/target/
-
-# Archivos de construcción Java
+# Compiled class files
 *.class
 
-# Logs
+# Log file
 *.log
 
-# Configuración de IDEs (IntelliJ, Eclipse, NetBeans)
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Virtual machine crash logs
+hs_err_pid*
+
+# Generated files
 *.iml
-.idea/
-*.ipr
-*.iws
+*.hprof
+
+# Eclipse
 .project
 .classpath
+.c9revisions
 .settings/
-.nb-configuration.xml
-.nb-gradle.xml
 
-# Archivos del sistema
+# IntelliJ IDEA
+.idea/
+*.iws
+*.ipr
+*.iml
+out/
+*.bak
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!src/main/resources/
+!src/test/resources/
+!**/build.gradle
+
+# Mac system files
 .DS_Store
+
+# Windows thumbnail cache
 Thumbs.db
 
-# Archivos temporales y de respaldo
-*.tmp
-*~
+# Temporary files
+*.swp
+*.swo
