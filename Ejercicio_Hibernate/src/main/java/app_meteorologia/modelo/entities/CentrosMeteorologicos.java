@@ -16,22 +16,22 @@ public class CentrosMeteorologicos implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_centro_met")
+	@Column(name = "ID_CENTRO_MET")
 	private Integer idCentroMet;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_municipio")
+	@JoinColumn(name = "ID_MUNICIPIO")
 	private Municipios municipios;
-	@Column(name = "nombre", length = 100)
+	@Column(name = "NOMBRE", length = 100)
 	private String nombre;
-	@Column(name = "direccion", length = 255)
+	@Column(name = "DIRECCION", length = 255)
 	private String direccion;
-	@Column(name = "latitud")
+	@Column(name = "LATITUD")
 	private Double latitud;
-	@Column(name = "longitud")
+	@Column(name = "LONGITUD")
 	private Double longitud;
-	@Column(name = "url")
+	@Column(name = "URL")
 	private String url;
-	@Column(name = "hash")
+	@Column(name = "HASH")
 	private String hash;
 	@OneToMany(mappedBy = "centrosMeteorologicos", fetch = FetchType.LAZY)
 	private Set<MedicionesCentroMet> medicionesCentroMets = new HashSet<>(0);

@@ -15,19 +15,19 @@ public class EspaciosNaturales implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_espacio")
+	@Column(name = "ID_ESPACIO")
 	private Integer idEspacio;
-	@Column(name = "nombre", length = 100)
+	@Column(name = "NOMBRE", length = 100)
 	private String nombre;
-	@Column(name = "descripcion", columnDefinition = "TEXT")
+	@Column(name = "DESCRIPCION", columnDefinition = "TEXT")
 	private String descripcion;
-	@Column(name = "tipo", length = 50)
+	@Column(name = "TIPO", length = 50)
 	private String tipo;
-	@Column(name = "categoria", length = 50)
+	@Column(name = "CATEGORIA", length = 50)
 	private String categoria;
-	@Column(name = "latitud")
+	@Column(name = "LATITUD")
 	private Double latitud;
-	@Column(name = "longitud")
+	@Column(name = "LONGITUD")
 	private Double longitud;
 	@OneToMany(mappedBy = "espaciosNaturales", fetch = FetchType.LAZY)
 	private Set<MunicipiosEspaciosNat> municipiosEspaciosNats = new HashSet<>(0);

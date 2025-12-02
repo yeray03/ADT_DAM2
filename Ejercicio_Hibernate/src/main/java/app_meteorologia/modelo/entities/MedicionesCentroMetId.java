@@ -11,11 +11,11 @@ public class MedicionesCentroMetId implements Serializable {
 
 	private static final long serialVersionUID = -4556075007927280420L;
 	
-	@Column(name = "fecha")
+	@Column(name = "FECHA")
 	private Date fecha;
-	@Column(name = "hora")
+	@Column(name = "HORA")
 	private Time hora;
-	@Column(name = "id_centro_met")
+	@Column(name = "ID_CENTRO_MET")
 	private int idCentroMet;
 
 	public MedicionesCentroMetId() {

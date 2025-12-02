@@ -17,7 +17,7 @@
     <property name="format_sql">true</property>
 
     <!-- Actualizar el esquema automáticamente -->
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
 
     <!-- Registrar las entidades -->
     <mapping class="app_meteorologia.modelo.entities.Provincias" />

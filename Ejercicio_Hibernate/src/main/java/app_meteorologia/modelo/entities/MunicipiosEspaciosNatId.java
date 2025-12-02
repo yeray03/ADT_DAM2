@@ -9,9 +9,9 @@ public class MunicipiosEspaciosNatId implements Serializable {
 
 	private static final long serialVersionUID = 7411651692183639630L;
 
-	@Column(name = "id_espacio")
+	@Column(name = "ID_ESPACIO")
 	private int idEspacio;
-	@Column(name = "id_municipio")
+	@Column(name = "ID_MUNICIPIO")
 	private int idMunicipio;
 
 	public MunicipiosEspaciosNatId() {

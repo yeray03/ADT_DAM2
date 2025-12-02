@@ -14,16 +14,16 @@ public class Municipios implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_municipio")
+	@Column(name = "ID_MUNICIPIO")
 	private Integer idMunicipio;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_provincia")
+	@JoinColumn(name = "ID_PROVINCIA")
 	private Provincias provincias;
-	@Column(name = "nombre", length = 100)
+	@Column(name = "NOMBRE", length = 100)
 	private String nombre;
-	@Column(name = "descripcion", columnDefinition = "TEXT")
+	@Column(name = "DESCRIPCION", columnDefinition = "TEXT")
 	private String descripcion;
-	@Column(name = "cod_municipio")
+	@Column(name = "COD_MUNICIPIO")
 	private Integer codMunicipio;
 	@OneToMany(mappedBy = "municipios", fetch = FetchType.LAZY)
 	private Set<MunicipiosEspaciosNat> municipiosEspaciosNats = new HashSet<>(0);

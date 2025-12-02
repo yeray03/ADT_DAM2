@@ -9,26 +9,25 @@ public class MedicionesCentroMet implements Serializable {
 
 	private static final long serialVersionUID = 64071800526901271L;
 	@EmbeddedId
-	@Column(name = "id")
 	private MedicionesCentroMetId id;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_centro_met", insertable = false, updatable = false)
+	@JoinColumn(name = "ID_CENTRO_MET", insertable = false, updatable = false)
 	private CentrosMeteorologicos centrosMeteorologicos;
-	@Column(name = "dir_viento")
+	@Column(name = "DIR_VIENTO")
 	private Integer dirViento;
-	@Column(name = "h_relativa")
+	@Column(name = "H_RELATIVA")
 	private Integer HRelativa;
-	@Column(name = "p_atmosferica")
+	@Column(name = "P_ATMOSFERICA")
 	private Float PAtmosferica;
-	@Column(name = "precip")
+	@Column(name = "PRECIP")
 	private Float precip;
-	@Column(name = "rad_solar")
+	@Column(name = "RAD_SOLAR")
 	private Float radSolar;
-	@Column(name = "temp_ambiente")
+	@Column(name = "TEMP_AMBIENTE")
 	private Float tempAmbiente;
-	@Column(name = "vviento")
+	@Column(name = "V_VIENTO")
 	private Float VViento;
-	@Column(name = "ica")
+	@Column(name = "ICA")
 	private String ica;
 
 	public MedicionesCentroMet() {

@@ -16,10 +16,10 @@ public class Provincias implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_provincia")
+	@Column(name = "ID_PROVINCIA")
 	private int idProvincia;
 	
-	@Column(name = "nombre", length = 100)
+	@Column(name = "NOMBRE", length = 100)
 	private String nombre;
 	
 	@OneToMany(mappedBy = "provincias", fetch = FetchType.LAZY)

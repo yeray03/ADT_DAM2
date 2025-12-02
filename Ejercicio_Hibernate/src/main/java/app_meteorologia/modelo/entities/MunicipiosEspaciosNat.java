@@ -10,13 +10,13 @@ public class MunicipiosEspaciosNat implements Serializable {
 	private static final long serialVersionUID = -4882092065927222320L;
 	
 	@EmbeddedId
-	@Column(name = "id")
+	@Column(name = "ID")
 	private MunicipiosEspaciosNatId id;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_espacio", insertable = false, updatable = false)
+	@JoinColumn(name = "ID_ESPACIO", insertable = false, updatable = false)
 	private EspaciosNaturales espaciosNaturales;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_municipio", insertable = false, updatable = false)
+	@JoinColumn(name = "ID_MUNICIPIO", insertable = false, updatable = false)
 	private Municipios municipios;
 
 	public MunicipiosEspaciosNat() {
