@@ -4,9 +4,11 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import app_meteorologia.modelo.dao.CentrosMeteorologicosDao;
+import app_meteorologia.modelo.dao.EspaciosNaturalesDao;
 import app_meteorologia.modelo.dao.MunicipiosDao;
 import app_meteorologia.modelo.dao.ProvinciasDao;
 import app_meteorologia.modelo.entities.CentrosMeteorologicos;
+import app_meteorologia.modelo.entities.EspaciosNaturales;
 import app_meteorologia.modelo.entities.Municipios;
 import app_meteorologia.modelo.entities.Provincias;
 import app_meteorologia.modelo.util.HibernateUtil;
@@ -57,11 +59,13 @@ public class VentanaTiempo extends JFrame {
 
 		// Crear el modelo de datos para la lista
 		DefaultListModel<String> listModel = new DefaultListModel<>();
-		
+		DefaultListModel<String> listModel2 = new DefaultListModel<>();
+		DefaultListModel<String> listModel3 = new DefaultListModel<>();
+
 		// Crear los JList y los JScrollPane correspondientes
 		JList<String> listaMunicipios = new JList<>(listModel);
-		JList<String> listaCentroMet = new JList<>(listModel);
-		JList<String> listaEspNat = new JList<>(listModel);
+		JList<String> listaCentroMet = new JList<>(listModel2);
+		JList<String> listaEspNat = new JList<>(listModel3);
 		// Crear el JScrollPane para poder hacer scroll en la lista
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(245, 60, 277, 250);
@@ -80,11 +84,9 @@ public class VentanaTiempo extends JFrame {
 		scrollPane3.setViewportView(listaCentroMet);
 		scrollPane3.setVisible(false);
 		getContentPane().add(scrollPane3);
-		
-		// Obtener el municipio seleccionado
-		String municipioSeleccionado = listaMunicipios.getSelectedValue();
+
 		btnNewButton.addActionListener(e -> {
-			
+
 			if (comboBox.isVisible() == true) {
 				// Obtener la provincia seleccionada
 				String provinciaSeleccionada = (String) comboBox.getSelectedItem();
@@ -103,15 +105,27 @@ public class VentanaTiempo extends JFrame {
 				comboBox.setEnabled(false);
 				comboBox.setVisible(false);
 
-			} else if (scrollPane.isVisible() == true) {
+			} else if (scrollPane.isVisible()) {
+				// Obtener el municipio seleccionado
+				String municipioSeleccionado = listaMunicipios.getSelectedValue();
+
 				comboBox.setVisible(false);
 				List<CentrosMeteorologicos> listaCentros = CentrosMeteorologicosDao
 						.getAllCentrosWhereMunicipio(municipioSeleccionado);
+
+				List<EspaciosNaturales> listaEspacios = EspaciosNaturalesDao
+						.getAllEspaciosWhereMunicipio(municipioSeleccionado);
 				// Limpiar el modelo de la lista antes de agregar nuevos elementos
-				listModel.clear();
+				listModel2.clear();
 				// Agregar los centros meteorológicos al modelo de la lista
 				for (CentrosMeteorologicos centro : listaCentros) {
-					listModel.addElement(centro.getNombre());
+					listModel2.addElement(centro.getNombre());
+				}
+				// Limpiar el modelo de la lista antes de agregar nuevos elementos
+				listModel3.clear();
+				// Agregar los espacios naturales al modelo de la lista
+				for (EspaciosNaturales espacio : listaEspacios) {
+					listModel3.addElement(espacio.getNombre());
 				}
 
 				// Ocultar la lista de municipios y mostrar el comboBox

@@ -10,7 +10,6 @@ public class MunicipiosEspaciosNat implements Serializable {
 	private static final long serialVersionUID = -4882092065927222320L;
 	
 	@EmbeddedId
-	@Column(name = "ID")
 	private MunicipiosEspaciosNatId id;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_ESPACIO", insertable = false, updatable = false)

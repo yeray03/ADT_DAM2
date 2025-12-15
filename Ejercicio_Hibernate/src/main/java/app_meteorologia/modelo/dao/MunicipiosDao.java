@@ -29,4 +29,24 @@ public class MunicipiosDao {
             return null;
         }
     }
+
+    public static Municipios getMunicipioWhereNombre(String nombreMunicipio) {
+        // Método para obtener un municipio por su nombre desde la base de datos
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+            Municipios ret = session.createQuery(
+                "FROM Municipios m WHERE m.nombre = :nombreMunicipio", 
+                Municipios.class)
+                .setParameter("nombreMunicipio", nombreMunicipio)
+                .uniqueResult();
+            transaction.commit();
+            session.close();
+            return ret;
+            
+            } catch (Exception e) {
+            System.out.println("Error al obtener el municipio: " + e.getMessage());
+            return null;
+        }
+    }
 }
